@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { IoEyeOutline } from 'react-icons/io5';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '@/firebase';
 
 const SignInCard = () => {
   const router = useRouter();
@@ -10,13 +12,50 @@ const SignInCard = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignIn = () => {
-    if (email === 'admin@aquacheck.com' && password === 'admin123') {
-      router.push('/realtime-page');
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    const auth = getAuth(app);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // User is signed in
+      const user = userCredential.user;
+      
+      // Store authentication state
       localStorage.setItem("isLoggedIn", "true");
-    } else {
-      setError('Unauthorized user. Please check your credentials.');
+      
+      // Redirect to realtime page
+      router.push('/realtime-page');
+    } catch (error) {
+      let errorMessage = 'An error occurred during sign in.';
+      
+      if (error instanceof Error) {
+        switch (error.message) {
+          case 'Firebase: Error (auth/invalid-email).':
+            errorMessage = 'Invalid email address.';
+            break;
+          case 'Firebase: Error (auth/user-disabled).':
+            errorMessage = 'This account has been disabled.';
+            break;
+          case 'Firebase: Error (auth/user-not-found).':
+            errorMessage = 'No user found with this email.';
+            break;
+          case 'Firebase: Error (auth/wrong-password).':
+            errorMessage = 'Incorrect password.';
+            break;
+          default:
+            errorMessage = error.message;
+        }
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,10 +93,7 @@ const SignInCard = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={(e) => {
-          e.preventDefault();
-          handleSignIn();
-        }}>
+        <form onSubmit={handleSignIn}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-blue-800 mb-1">
               Email address
@@ -69,6 +105,8 @@ const SignInCard = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+              autoComplete="current-password"
             />
           </div>
 
@@ -84,6 +122,9 @@ const SignInCard = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+                minLength={6}
+                autoComplete="current-password"
               />
               <button
                 type="button"
@@ -103,9 +144,10 @@ const SignInCard = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-md"
+            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={isLoading}
           >
-            Sign In
+            {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
       </div>

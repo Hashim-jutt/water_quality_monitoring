@@ -12,8 +12,8 @@ const RootLayout = ({ children }: PropsWithChildren<{}>) => {
 
   return (
     <html lang="en" className="h-full">
-      <Navbar/>
       <body className="loading bg-white h-full overflow-hidden">
+      <Navbar/>
         <main id="skip" className="w-full flex h-full">
           {!isSignInPage && (
             <div className="h-full flex-shrink-0 hidden sm:block">

@@ -70,7 +70,7 @@ const DetailsPage = () => {
                   { label: 'pH', value: data.pH, icon: '🧪' },
                   { label: 'Temperature', value: `${data.Temperature} °C`, icon: '🌡️' },
                   { label: 'Turbidity', value: `${data.Turbidity} NTU`, icon: '💧' },
-                  { label: 'Recorded At', value: data.recordedAt, icon: '⏱️' }
+                  { label: 'Recorded At', value: data.created_at, icon: '⏱️' }
                 ].map((item, index) => (
                   <div key={index} className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">

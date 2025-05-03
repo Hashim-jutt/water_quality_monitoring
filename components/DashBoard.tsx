@@ -168,13 +168,13 @@ const WaterQualityLanding = () => {
                 Get Started
               </motion.button>
               </Link>
-              <motion.button 
+              {/* <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-white text-blue-600 rounded-full font-semibold shadow-lg"
               >
                 Learn More
-              </motion.button>
+              </motion.button> */}
             </div>
           </motion.div>
         </div>
@@ -333,9 +333,6 @@ const WaterQualityLanding = () => {
                   >
                     <div className="flex justify-between items-center">
                       <h3 className="font-semibold text-blue-800">{algo.name}</h3>
-                      <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">
-                        {algo.accuracy} accuracy
-                      </span>
                     </div>
                     <p className="text-blue-600 text-sm mt-1">{algo.description}</p>
                   </motion.div>
@@ -452,7 +449,7 @@ const WaterQualityLanding = () => {
           >
             Join hundreds of organizations using our platform for reliable water quality insights.
           </motion.p>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -473,7 +470,7 @@ const WaterQualityLanding = () => {
             >
               Contact Sales
             </motion.button>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
@@ -511,7 +508,7 @@ const WaterQualityLanding = () => {
             </div>
           </div>
           <div className="border-t border-blue-800 mt-12 pt-8 text-center text-blue-300">
-            <p>© 2023 AquaCheck. All rights reserved.</p>
+            <p>© 2025 AquaCheck. All rights reserved.</p>
           </div>
         </div>
       </footer>

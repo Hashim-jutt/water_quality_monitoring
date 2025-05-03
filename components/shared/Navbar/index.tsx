@@ -21,13 +21,13 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed w-full z-50 bg-transpaerent transition-all duration-300`}
+      className={`fixed w-full z-0 bg-white transition-all duration-300`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href='/realtime-page'>
+            <Link href='/'>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center"
