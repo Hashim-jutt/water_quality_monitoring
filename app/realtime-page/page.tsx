@@ -167,7 +167,7 @@ const RealTimeDataTable = () => {
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 className={`p-4 rounded-xl shadow-lg ${
-                  latestData?.models?.KNN?.result === 'drinkable'
+                  latestData?.final_result === 'Drinkable'
                     ? 'bg-green-100 text-green-800'
                     : 'bg-red-100 text-red-800'
                 }`}
@@ -182,7 +182,7 @@ const RealTimeDataTable = () => {
                     </p>
                   </div>
                   <div className="text-2xl font-bold">
-                    {latestData?.models?.KNN?.result === 'drinkable'
+                    {latestData?.final_result === 'Drinkable'
                       ? 'Drinkable'
                       : 'Not Drinkable'}
                   </div>

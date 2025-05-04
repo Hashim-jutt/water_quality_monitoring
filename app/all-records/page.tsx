@@ -118,12 +118,12 @@ const AllRecords = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <span
                         className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
-                          record.models?.KNN?.result === 'drinkable'
+                          record?.final_result === 'Drinkable'
                             ? 'bg-green-100 text-green-800'
                             : 'bg-red-100 text-red-800'
                         }`}
                       >
-                        {record.models?.KNN?.result}
+                        {record.final_result}
                       </span>
                     </td>
                   </motion.tr>

@@ -113,7 +113,7 @@ const DetailsPage = () => {
                       <div className="bg-blue-50 rounded-lg p-4">
                         <h3 className="font-medium text-blue-800 mb-2">Result</h3>
                         <span className={`text-lg font-semibold ${
-                          model.result === 'drinkable' ? 'text-green-600' : 'text-red-600'
+                          model.result === 'Drinkable' ? 'text-green-600' : 'text-red-600'
                         }`}>
                           {model.result}
                         </span>
