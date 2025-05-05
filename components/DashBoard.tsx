@@ -74,10 +74,10 @@ const mlAlgorithms = [
     description: 'Statistical model for binary classification problems',
     accuracy: '83%'
   },
-  { 
-    name: 'Naive Bayes', 
-    description: 'Probabilistic classifier based on Bayes theorem',
-    accuracy: '80%'
+  {
+    name: 'Gradient Boosting',
+    description: 'Ensemble learning technique that builds models sequentially to correct predecessor errors',
+    accuracy: '92%'
   }
 ];
 
