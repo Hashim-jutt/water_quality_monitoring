@@ -43,6 +43,8 @@ const AllRecords = () => {
     router.push(`/details?data=${queryString}`);
   };
 
+  console.log(records)
+
   return (
     <div className="min-h-screen mt-20 bg-gradient-to-b from-blue-50 to-blue-100 p-4 md:p-8">
       <motion.div
