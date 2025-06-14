@@ -3,14 +3,14 @@ import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyClw-k486vPhLEGVkbbc6JkKa3ryD7-B4s",
-  authDomain: "fyp-hashim.firebaseapp.com",
-  databaseURL: "https://fyp-hashim-default-rtdb.firebaseio.com",
-  projectId: "fyp-hashim",
-  storageBucket: "fyp-hashim.firebasestorage.app",
-  messagingSenderId: "399149764399",
-  appId: "1:399149764399:web:3bd5ee578b3923744a9bda",
-  measurementId: "G-HV3LE3MNZK",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
